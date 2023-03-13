@@ -36,7 +36,7 @@ DB_PORT = os.environ.get('DB_PORT')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-greatkart-app.herokuapp.com/']
+ALLOWED_HOSTS = ['django-greatkart-app.herokuapp.com']
 
 
 # Application definition
