@@ -103,11 +103,11 @@ AUTH_USER_MODEL = 'accounts.Account'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'DB_NAME': DB_NAME,
-        'DB_PASSWORD': DB_PASSWORD,
-        'DB_USER': DB_USER,
-        'DB_HOST': DB_HOST,
-        'DB_PORT': DB_PORT,
+        'NAME': DB_NAME,
+        'PASSWORD': DB_PASSWORD,
+        'USER': DB_USER,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     }
 }
 
