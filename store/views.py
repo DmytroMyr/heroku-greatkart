@@ -9,6 +9,7 @@ from .forms import ReviewForm
 from category.models import Category
 from carts.models import CartItem
 from carts.views import _cart_id
+from orders.models import OrderProduct
 
 
 PRODUCTS_PER_PAGE: int = 10
@@ -92,10 +93,20 @@ def product_detail(request: HttpRequest, category_slug: str, product_slug: str) 
         in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=single_product).exists()
     except Exception as e:
         raise e
+    
+    try:
+        ordered_product = OrderProduct.objects.filter(user=request.user, product_id=single_product.id).exists()
+    except OrderProduct.DoesNotExist:
+        ordered_product = None
+
+    # Get the reviews
+    reviews = ReviewRating.objects.filter(product_id=single_product.id, status=True)
 
     context = {
         'single_product': single_product,
         'in_cart': in_cart,
+        'ordered_product': ordered_product,
+        'reviews': reviews,
     }
 
     return render(request, 'store/product_detail.html', context)
