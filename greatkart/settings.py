@@ -51,7 +51,7 @@ AWS_HEADERS = {
     'Access-Control-Allow-Origin': '*',
 }
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 
@@ -170,7 +170,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
     'greatkart/static',
 ]
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Media file configuration
 # MEDIA_URL = 'media/'
