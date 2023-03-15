@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'store',
     'carts',
     'orders',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -172,7 +173,7 @@ STATICFILES_DIRS = [
 
 # Media file configuration
 # MEDIA_URL = 'media/'
-MEDIA_URL = F'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
