@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'django-insecure-%adxavwm!_89wund7gwt8!w#p#yvlazm^l_bse#tdc%1&w$_t='
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DB_NAME = os.environ.get('DB_NAME')
@@ -36,23 +37,6 @@ DB_PORT = os.environ.get('DB_PORT')
 DEBUG = False
 
 ALLOWED_HOSTS = ['django-greatkart-app.herokuapp.com']
-
-# Amason S3
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-AWS_DEFAULT_ACL = 'public-read'
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-AWS_LOCATION = 'static'
-AWS_HEADERS = {
-    'Access-Control-Allow-Origin': '*',
-}
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 
 # Application definition
@@ -69,7 +53,6 @@ INSTALLED_APPS = [
     'store',
     'carts',
     'orders',
-    'storages',
 ]
 
 MIDDLEWARE = [
@@ -162,18 +145,18 @@ USE_I18N = True
 
 USE_TZ = True
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
     'greatkart/static',
 ]
 
 # Media file configuration
-# MEDIA_URL = 'media/'
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
